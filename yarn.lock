@@ -1723,8 +1723,8 @@ error-stack-parser@^2.0.0:
     stackframe "^1.0.3"
 
 "es-base@https://github.com/yanhao1991/es-base.git":
-  version "1.0.0"
-  resolved "https://github.com/yanhao1991/es-base.git#638474ad3e18177d1390b7eefb6237ad78630be4"
+  version "1.0.1"
+  resolved "https://github.com/yanhao1991/es-base.git#8dced6ca8de5560615009533457866a86e3c062f"
   dependencies:
     antd "^2.12.3"
     axios "^0.16.2"
