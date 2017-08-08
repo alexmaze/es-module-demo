@@ -1,5 +1,3 @@
-var config = require("./config")
-
 var path = require("path")
 var webpack = require("webpack")
 var merge = require("webpack-merge")
@@ -9,9 +7,17 @@ var FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin")
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 var OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin")
 
+const config = {
+  moduleName: "test",
+  entryFile: "./src/Test.tsx",
+  routePrefix: "/test",
+  dist: path.join(__dirname, "../../dist"),
+  staticAssetsPath: "assets"
+}
+
 module.exports = {
   entry: {
-    umd: "./src/Test.tsx"
+    umd: config.entryFile
   },
   externals: {
     react: "React"
@@ -76,6 +82,9 @@ module.exports = {
     umdNamedDefine: true
   },
   plugins: [
+    new webpack.DefinePlugin({
+      ["ENV_PREFIX"]: '"' + config.routePrefix + '"'
+    }),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(true),
     // new ExtractTextPlugin({
@@ -95,8 +104,8 @@ function generateLoaders(isLess) {
     {
       loader: "css-loader",
       options: {
-        minimize: config.cssMinimize,
-        sourceMap: config.cssSourceMap
+        minimize: true,
+        sourceMap: false
       }
     },
     {
@@ -107,7 +116,7 @@ function generateLoaders(isLess) {
     loaders.push({
       loader: "less-loader",
       options: {
-        sourceMap: config.cssSourceMap
+        sourceMap: false
       }
     })
   }

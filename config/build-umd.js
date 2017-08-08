@@ -25,8 +25,8 @@ webpack(webpackConfig, function(err, stats) {
 
   const assets = stats
     .toJson({ modules: true })
-    .assets.map(item => ({ src: item.name, name: "test" }))
-  fs.writeFile("./dist/manifest.json", JSON.stringify(assets, " ", 2))
+    .assets.map(item => ({ src: item.name, varName: "test" }))
+  fs.writeFile("./dist/manifest.json", JSON.stringify(assets[0], " ", 2))
 
   console.log(chalk.cyan("  Build complete.\n"))
 })

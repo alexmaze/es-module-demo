@@ -13,3 +13,5 @@ declare var module: { hot: any }
 declare module "rc-util/lib/Dom/addEventListener" {
   export type RcUtilEventHandler = any
 }
+
+declare const ENV_PREFIX: any
